@@ -171,7 +171,8 @@ static int process_frame(int dev_id, unsigned char *frame)
                 if (frame_id == 0)
                     printf("downloading history...\n");
                 else if (frame_id % 10 == 0)
-                { // print progression status
+                {
+                    // print progression status
                     // rough estimation : we should received a month of history
                     // -> 31x24x60 minute records
                     printf("\r %.1f%%", min(100, 100 * ((double)frame_id / (31 * 24 * 60))));
@@ -182,7 +183,7 @@ static int process_frame(int dev_id, unsigned char *frame)
             }
             else
             {
-                process_live_data(&rec); // the record is not live data, but we do that to
+                //process_live_data(&rec); // the record is not live data, but we do that to
                                          // update the time in the .live file
                                          // (the cm160 send a DB frame when a new minute starts)
             }
@@ -197,7 +198,7 @@ static int process_frame(int dev_id, unsigned char *frame)
                 receive_history = false;
             }
 
-            process_live_data(&rec);
+            //process_live_data(&rec);
             //printf("LIVE: %02d/%02d/%04d %02d:%02d : %f W\n",
             //       rec.day, rec.month, rec.year, rec.hour, rec.min, rec.watts);
 
