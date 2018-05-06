@@ -55,6 +55,22 @@ static char WAIT_MSG[11] = {
 struct cm160_device g_devices[MAX_DEVICES];
 static unsigned char history[HISTORY_SIZE][11];
 
+struct record_data {
+    int addr;
+    int year;
+    int month;
+    int day;
+    int hour;
+    int min;
+    float cost;
+    float amps;
+    float watts;
+    float ah;
+    float wh;
+    bool isLiveData;
+
+};
+
 static void process_live_data(struct record_data *rec)
 {
     static double _watts = -1;
